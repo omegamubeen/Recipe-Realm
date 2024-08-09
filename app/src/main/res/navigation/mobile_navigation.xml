@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/makeRecipeFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -20,20 +20,47 @@
         android:name="com.app.reciperealm.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.app.reciperealm.ui.fragments.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
+
     <fragment
         android:id="@+id/notificationFragment"
         android:name="com.app.reciperealm.ui.fragments.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.app.reciperealm.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/createRecipeFragment"
+        android:name="com.app.reciperealm.ui.fragments.CreateRecipeFragment"
+        android:label="fragment_create_recipe"
+        tools:layout="@layout/fragment_create_recipe" />
+
+    <fragment
+        android:id="@+id/makeRecipeFragment"
+        android:name="com.app.reciperealm.ui.fragments.MakeRecipeFragment"
+        android:label="fragment_make_recipe"
+        tools:layout="@layout/fragment_make_recipe" />
+
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="com.app.reciperealm.ui.fragments.tablayoutfragment.RecipeFragment"
+        android:label="fragment_recipe"
+        tools:layout="@layout/fragment_recipe" />
+
+    <fragment
+        android:id="@+id/videosFragment"
+        android:name="com.app.reciperealm.ui.fragments.tablayoutfragment.VideosFragment"
+        android:label="fragment_videos"
+        tools:layout="@layout/fragment_videos" />
 
 </navigation>

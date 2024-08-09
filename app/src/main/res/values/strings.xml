@@ -48,4 +48,20 @@
     <string name="following">Following</string>
     <string name="how_to_make_french_toast">How to make french \ntoast</string>
     <string name="_300_reviews">(300 Reviews)</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="_5_items">5 items</string>
+    <string name="follow">Follow</string>
+    <string name="bali_indonesia">Bali, Indonesia</string>
+    <string name="roberta_anny">Roberta Anny</string>
+    <string name="_200g">200g</string>
+    <string name="bread">Bread</string>
+    <string name="create_recipe">Create recipe</string>
+    <string name="add_new_ingredient">+ Add new Ingredient</string>
+    <string name="save_my_recipes">Save my recipes</string>
+    <string name="cook_time">Cook time</string>
+    <string name="_45_min">45 min</string>
+    <string name="serves">Serves</string>
+    <string name="bento_lunch_box_ideas_for_work">Add recipe title.</string>
+    <string name="item_name">Item name</string>
+    <string name="quantity">Quantity</string>
 </resources>
