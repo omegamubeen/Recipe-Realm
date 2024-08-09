@@ -156,7 +156,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Roberta Anny"
+        android:text="@string/roberta_anny"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/cardView6"
@@ -177,7 +177,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:fontFamily="@font/poppins_regular"
-        android:text="Bali, Indonesia"
+        android:text="@string/bali_indonesia"
         android:textColor="#A9A9A9"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/ivLocation"
@@ -189,8 +189,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/red"
+        app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -201,10 +201,48 @@
             android:layout_height="match_parent"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
-            android:text="Follow"
+            android:text="@string/follow"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvIngredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/ingredients"
+        android:textColor="@color/neutral"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView6" />
+
+    <TextView
+        android:id="@+id/tvItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/_5_items"
+        android:textColor="#A9A9A9"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvIngredients"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvIngredients" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvIngredients"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvIngredients"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_ingredients" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
