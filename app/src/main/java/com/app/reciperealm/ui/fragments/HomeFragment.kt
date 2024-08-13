@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import com.app.reciperealm.R
 import com.app.reciperealm.databinding.FragmentHomeBinding
@@ -37,6 +38,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         return binding?.root
     }
 

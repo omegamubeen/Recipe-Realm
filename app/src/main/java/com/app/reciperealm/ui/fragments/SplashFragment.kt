@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.app.reciperealm.R
@@ -17,6 +18,9 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
+
+        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         return binding?.root
     }
 
