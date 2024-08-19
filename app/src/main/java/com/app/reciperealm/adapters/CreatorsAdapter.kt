@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.reciperealm.databinding.ItemCreatorsBinding
 import com.app.reciperealm.ui.model.CreatorsModel
-import com.app.reciperealm.ui.utils.loadImageFromUrl
+import com.app.reciperealm.utils.loadImageFromUrl
 
 class CreatorsAdapter(private val creatorsList: MutableList<CreatorsModel>) :
     RecyclerView.Adapter<CreatorsAdapter.ViewHolder>() {

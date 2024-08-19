@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.reciperealm.databinding.ItemRecentBinding
 import com.app.reciperealm.ui.model.RecentModel
-import com.app.reciperealm.ui.utils.loadImageFromUrl
+import com.app.reciperealm.utils.loadImageFromUrl
 
 class RecentRecipeAdapter(private val recentList: MutableList<RecentModel>) :
     RecyclerView.Adapter<RecentRecipeAdapter.ViewHolder>() {

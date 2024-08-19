@@ -4,10 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.reciperealm.databinding.ItemNotificationBinding
-import com.app.reciperealm.databinding.ItemPopularRecipeBinding
-import com.app.reciperealm.ui.model.CategoryModel
 import com.app.reciperealm.ui.model.MessageModel
-import com.app.reciperealm.ui.utils.loadImageFromUrl
 
 class NotificationAdapter(private val MessageList: MutableList<MessageModel>) :
     RecyclerView.Adapter<NotificationAdapter.ViewHolder>() {

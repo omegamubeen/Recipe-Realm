@@ -15,6 +15,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField ("String", "BASE_URL", "\"https://www.themealdb.com/api/json/v1/\"")
     }
 
     buildTypes {
@@ -34,6 +35,8 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
+
     }
 }
 
@@ -54,7 +57,6 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
 
     //TabLayout & Viewpager
-    implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     //Image processing
@@ -62,8 +64,6 @@ dependencies {
 
     //Sizing
     implementation("com.intuit.sdp:sdp-android:1.1.0")
-
-    implementation("com.github.addisonelliott:SegmentedButton:3.1.9")
 
     //Lifecycle
     //def lifecycleVersion = ("2.5.1")
@@ -85,17 +85,9 @@ dependencies {
 
     implementation("com.skyfishjy.ripplebackground:library:1.0.1")
 
-    implementation("com.airbnb.android:lottie:6.0.0")
-
     // Room
     //def room_version = "2.5.1"
     implementation("androidx.room:room-ktx:2.5.1")
-    implementation("androidx.room:room-compiler:2.5.1")
-
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-
-    //IAP
-    //def billing_version = "5.1.0"
-    implementation("com.android.billingclient:billing-ktx:5.1.0")
+    annotationProcessor("androidx.room:room-compiler:2.5.1")
 
 }

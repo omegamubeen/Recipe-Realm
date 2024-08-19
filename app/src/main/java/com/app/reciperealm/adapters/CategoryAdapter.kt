@@ -1,14 +1,19 @@
-package com.app.reciperealm.ui.adapters
+package com.app.reciperealm.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.reciperealm.databinding.ItemPopularRecipeBinding
-import com.app.reciperealm.ui.model.CategoryModel
-import com.app.reciperealm.ui.utils.loadImageFromUrl
+import com.app.reciperealm.models.remote.AllCategoryResponse
+import com.app.reciperealm.models.remote.RecipeByCategoryResponse
+import com.app.reciperealm.utils.loadImageFromUrl
 
-class CategoryAdapter(private val creatorsList: MutableList<CategoryModel>) :
+class CategoryAdapter(val onClick: (RecipeByCategoryResponse.Meal) -> Unit
+) :
     RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+
+    private val category: ArrayList<RecipeByCategoryResponse.Meal> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -17,18 +22,31 @@ class CategoryAdapter(private val creatorsList: MutableList<CategoryModel>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val model = creatorsList[position]
+        val model = category[position]
 
         with(holder.binding) {
-            ivRecipe.loadImageFromUrl(model.image)
-            tvRecipeName.text = model.title
-            tvTime.text = model.time
+            ivRecipe.loadImageFromUrl(model.strMealThumb)
+            tvRecipeName.text = model.strMeal
+
+            root.setOnClickListener {
+                onClick(model)
+                notifyDataSetChanged()
+            }
+
         }
+
     }
 
-    override fun getItemCount(): Int = creatorsList.size
+    override fun getItemCount(): Int = category.size
 
     inner class ViewHolder(val binding: ItemPopularRecipeBinding) :
         RecyclerView.ViewHolder(binding.root)
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun refresh(newList: ArrayList<RecipeByCategoryResponse.Meal>) {
+        category.clear()
+        category.addAll(newList)
+        notifyDataSetChanged()
+    }
 
 }

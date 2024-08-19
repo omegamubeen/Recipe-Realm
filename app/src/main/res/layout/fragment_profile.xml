@@ -24,6 +24,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="20dp"
+        android:visibility="gone"
         android:contentDescription="@string/todo"
         android:src="@drawable/ic_more"
         app:layout_constraintBottom_toBottomOf="@+id/tvProfile"
@@ -119,8 +120,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:baselineAligned="false"
                 android:orientation="horizontal"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvBio">

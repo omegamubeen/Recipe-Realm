@@ -1,12 +1,11 @@
-package com.app.reciperealm.ui.adapters
+package com.app.reciperealm.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.reciperealm.databinding.ItemIngredientsBinding
-import com.app.reciperealm.databinding.ItemPopularRecipeBinding
 import com.app.reciperealm.ui.model.CategoryModel
-import com.app.reciperealm.ui.utils.loadImageFromUrl
+import com.app.reciperealm.utils.loadImageFromUrl
 
 class IngredientsAdapter(private val creatorsList: MutableList<CategoryModel>) :
     RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() {

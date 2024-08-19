@@ -6,16 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.app.reciperealm.R
+import com.app.reciperealm.adapters.TrendingAdapter
 import com.app.reciperealm.databinding.FragmentVideosBinding
-import com.app.reciperealm.extensions.setVerticalLayout
-import com.app.reciperealm.ui.adapters.TrendingAdapter
-import com.app.reciperealm.ui.model.TrendingModel
+import com.app.reciperealm.extensions.setHorizontalLayout
+import com.app.reciperealm.models.remote.RandomRecipeResponse
+import com.app.reciperealm.network.Status
+import com.app.reciperealm.utils.LoaderUtility
+import com.app.reciperealm.utils.LoaderUtility.showLoader
+import com.app.reciperealm.viewmodels.RandomViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class VideosFragment : Fragment(R.layout.fragment_videos) {
 
     private var binding: FragmentVideosBinding? = null
-    private val trendingAdapter by lazy { TrendingAdapter(list) }
-    private val list: ArrayList<TrendingModel> = ArrayList()
+    private val randomViewModel: RandomViewModel by viewModel()
+    private val trendingAdapter by lazy { TrendingAdapter() }
+    private val randomList: ArrayList<RandomRecipeResponse.Meal> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -27,48 +33,36 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding!!.rcvTrending.apply {
-            setVerticalLayout()
-            adapter = trendingAdapter
-        }
-        val likesList = mutableListOf(
-            TrendingModel(
-                "https://tse4.mm.bing.net/th?id=OIP.9il3mslQq4vwUr0krbmBlwHaGg&pid=Api&P=0&h=220",
-                "By Niki Samantha",
-                "How to make french toast",
-                "https://tse4.mm.bing.net/th?id=OIP.1czg1cpKTKn-Z_uQyfKEtAHaE8&pid=Api&P=0&h=220",
-                "15:30"
-            ),
-            TrendingModel(
-                "https://tse4.mm.bing.net/th?id=OIP.9il3mslQq4vwUr0krbmBlwHaGg&pid=Api&P=0&h=220",
-                "By Niki Samantha",
-                "How to make french toast",
-                "https://tse4.mm.bing.net/th?id=OIP.1czg1cpKTKn-Z_uQyfKEtAHaE8&pid=Api&P=0&h=220",
-                "15:30"
-            ),
-            TrendingModel(
-                "https://tse4.mm.bing.net/th?id=OIP.9il3mslQq4vwUr0krbmBlwHaGg&pid=Api&P=0&h=220",
-                "By Niki Samantha",
-                "How to make french toast",
-                "https://tse4.mm.bing.net/th?id=OIP.1czg1cpKTKn-Z_uQyfKEtAHaE8&pid=Api&P=0&h=220",
-                "15:30"
-            ),
-            TrendingModel(
-                "https://tse4.mm.bing.net/th?id=OIP.9il3mslQq4vwUr0krbmBlwHaGg&pid=Api&P=0&h=220",
-                "By Niki Samantha",
-                "How to make french toast",
-                "https://tse4.mm.bing.net/th?id=OIP.1czg1cpKTKn-Z_uQyfKEtAHaE8&pid=Api&P=0&h=220",
-                "15:30"
-            ),
-            TrendingModel(
-                "https://tse4.mm.bing.net/th?id=OIP.9il3mslQq4vwUr0krbmBlwHaGg&pid=Api&P=0&h=220",
-                "By Niki Samantha",
-                "How to make french toast",
-                "https://tse4.mm.bing.net/th?id=OIP.1czg1cpKTKn-Z_uQyfKEtAHaE8&pid=Api&P=0&h=220",
-                "15:30"
-            ),
-        )
-        binding!!.rcvTrending.adapter = TrendingAdapter(likesList)
+        getRandomRecipe()
 
     }
+
+    private fun getRandomRecipe() {
+        randomViewModel.getRandomRecipes().observe(viewLifecycleOwner) { response ->
+            when (response.status) {
+                Status.ERROR -> {
+                    LoaderUtility.hideLoader()
+                }
+
+                Status.LOADING -> {
+                    showLoader()
+                }
+
+                Status.SUCCESS -> {
+                    LoaderUtility.hideLoader()
+                    val it = response.data?.meals
+                    randomList.clear()
+                    randomList.addAll(it?.toCollection(ArrayList())?.reversed() ?: ArrayList())
+                    binding!!.rcvTrending.apply {
+                        setHorizontalLayout()
+                        adapter = trendingAdapter
+                    }
+                    binding!!.rcvTrending.setHorizontalLayout()
+                    binding!!.rcvTrending.adapter = trendingAdapter.apply { refresh(randomList) }
+
+                }
+            }
+        }
+    }
+
 }

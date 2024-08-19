@@ -19,13 +19,21 @@
         android:id="@+id/homeFragment"
         android:name="com.app.reciperealm.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_makeRecipeFragment"
+            app:destination="@id/makeRecipeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.app.reciperealm.ui.fragments.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_makeRecipeFragment"
+            app:destination="@id/makeRecipeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/notificationFragment"
@@ -47,9 +55,9 @@
 
     <fragment
         android:id="@+id/makeRecipeFragment"
-        android:name="com.app.reciperealm.ui.fragments.MakeRecipeFragment"
+        android:name="com.app.reciperealm.ui.fragments.DetailRecipeFragment"
         android:label="fragment_make_recipe"
-        tools:layout="@layout/fragment_make_recipe" />
+        tools:layout="@layout/fragment_detail_recipe" />
 
     <fragment
         android:id="@+id/recipeFragment"

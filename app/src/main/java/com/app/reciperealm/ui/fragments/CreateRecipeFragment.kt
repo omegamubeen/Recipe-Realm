@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.app.reciperealm.R
 import com.app.reciperealm.databinding.FragmentCreateRecipeBinding
 import com.app.reciperealm.extensions.setVerticalLayout
-import com.app.reciperealm.ui.adapters.IngredientsAdapter
+import com.app.reciperealm.adapters.IngredientsAdapter
 import com.app.reciperealm.ui.model.CategoryModel
 
 class CreateRecipeFragment : Fragment(R.layout.fragment_create_recipe) {

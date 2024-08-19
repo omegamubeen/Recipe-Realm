@@ -1,16 +1,23 @@
 package com.app.reciperealm.network
 
-import com.app.reciperealm.network.ApiService
-import com.app.reciperealm.network.BaseDataSource
-import okhttp3.MultipartBody
-
-
 class RemoteDataSource(
     private val apiService: ApiService
 ) : BaseDataSource() {
 
-//    suspend fun getPlans() = getResult {
-//        apiService.getPlans()
+    suspend fun getRandomRecipes() = getResult {
+        apiService.getRandomRecipes()
+    }
+
+    suspend fun getAllCategory(category: String) = getResult {
+        apiService.getAllCategory(category)
+    }
+
+    suspend fun getRecipesCategory(category: String) = getResult {
+        apiService.getRecipesCategory(category)
+    }
+
+//    suspend fun getAllIngredients(ingredient: String) = getResult {
+//        apiService.getAllIngredients(ingredient)
 //    }
 
 }
