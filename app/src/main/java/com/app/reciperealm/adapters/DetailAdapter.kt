@@ -4,28 +4,34 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.app.reciperealm.databinding.ItemPopularRecipeBinding
+import com.app.reciperealm.databinding.ItemIngredientsBinding
+import com.app.reciperealm.model.CategoryModel
 import com.app.reciperealm.models.remote.AllCategoryResponse
+import com.app.reciperealm.models.remote.AllDetailRecipeResponse
+import com.app.reciperealm.models.remote.RandomRecipeResponse
 import com.app.reciperealm.models.remote.RecipeByCategoryResponse
 import com.app.reciperealm.utils.loadImageFromUrl
 
-class CategoryAdapter(val onClick: (RecipeByCategoryResponse.Meal) -> Unit
-) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class DetailAdapter(val onClick: (AllDetailRecipeResponse.Meal) -> Unit
+) :
+    RecyclerView.Adapter<DetailAdapter.ViewHolder>() {
 
-    private val category: ArrayList<RecipeByCategoryResponse.Meal> = ArrayList()
+    private val detail: ArrayList<AllDetailRecipeResponse.Meal> = ArrayList()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemPopularRecipeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemIngredientsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val model = category[position]
+        val model = detail[position]
 
         with(holder.binding) {
             ivRecipe.loadImageFromUrl(model.strMealThumb)
-            tvRecipeName.text = model.strMeal
+            tvTitle.text = model.strIngredient1
+            tvItems.text = model.strMeasure1
 
             root.setOnClickListener {
                 onClick(model)
@@ -33,19 +39,17 @@ class CategoryAdapter(val onClick: (RecipeByCategoryResponse.Meal) -> Unit
             }
 
         }
-
     }
 
-    override fun getItemCount(): Int = category.size
+    override fun getItemCount(): Int = detail.size
 
-    inner class ViewHolder(val binding: ItemPopularRecipeBinding) :
+    inner class ViewHolder(val binding: ItemIngredientsBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     @SuppressLint("NotifyDataSetChanged")
-    fun refresh(newList: ArrayList<RecipeByCategoryResponse.Meal>) {
-        category.clear()
-        category.addAll(newList)
+    fun refresh(newList: ArrayList<AllDetailRecipeResponse.Meal>) {
+        detail.clear()
+        detail.addAll(newList)
         notifyDataSetChanged()
     }
-
 }

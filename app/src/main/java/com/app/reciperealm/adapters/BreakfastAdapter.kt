@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.app.reciperealm.R
 import com.app.reciperealm.databinding.ItemPopularBinding
 import com.app.reciperealm.models.remote.AllCategoryResponse
-import com.app.reciperealm.ui.model.BreakfastModel
-import com.app.reciperealm.ui.model.RecentModel
 import kotlin.reflect.KFunction1
 
 class BreakfastAdapter(

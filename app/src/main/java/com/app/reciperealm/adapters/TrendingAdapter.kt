@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.reciperealm.databinding.ItemTrendingBinding
+import com.app.reciperealm.models.remote.AllDetailRecipeResponse
 import com.app.reciperealm.models.remote.RandomRecipeResponse
 import com.app.reciperealm.utils.loadImageFromUrl
 
 class TrendingAdapter(
-
+    val onClick: (RandomRecipeResponse.Meal) -> Unit
 ) : RecyclerView.Adapter<TrendingAdapter.ViewHolder>() {
 
     private val random: ArrayList<RandomRecipeResponse.Meal> = ArrayList()
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -27,6 +27,12 @@ class TrendingAdapter(
         with(holder.binding) {
             ivVideo.loadImageFromUrl(model.strMealThumb)
             tvVideoTitle.text = model.strMeal
+
+            root.setOnClickListener {
+                onClick(model)
+                notifyDataSetChanged()
+            }
+
         }
     }
 

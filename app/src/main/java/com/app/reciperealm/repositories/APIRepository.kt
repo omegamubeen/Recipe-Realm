@@ -3,6 +3,7 @@ package com.app.reciperealm.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.app.reciperealm.models.remote.AllCategoryResponse
+import com.app.reciperealm.models.remote.AllDetailRecipeResponse
 import com.app.reciperealm.models.remote.RandomRecipeResponse
 import com.app.reciperealm.models.remote.RecipeByCategoryResponse
 import com.app.reciperealm.network.RemoteDataSource
@@ -37,14 +38,14 @@ class APIRepository(private val remoteDataSource: RemoteDataSource) {
         emit(response)
     }
 
-//    fun getAllIngredients(
-//        ingredient: String
-//    ): LiveData<Resource<AllIngredientsResponse>> = liveData(Dispatchers.IO) {
-//        emit(Resource.loading(null))
-//        val response = remoteDataSource.getAllIngredients(
-//            ingredient
-//        )
-//        emit(response)
-//    }
+    fun getRecipesDetail(
+        id: String
+    ): LiveData<Resource<AllDetailRecipeResponse>> = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        val response = remoteDataSource.getRecipesDetail(
+            id
+        )
+        emit(response)
+    }
 
 }

@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.app.reciperealm.R
 import com.app.reciperealm.adapters.TrendingAdapter
 import com.app.reciperealm.databinding.FragmentVideosBinding
 import com.app.reciperealm.extensions.setHorizontalLayout
 import com.app.reciperealm.models.remote.RandomRecipeResponse
 import com.app.reciperealm.network.Status
+import com.app.reciperealm.ui.fragments.HomeFragmentDirections
 import com.app.reciperealm.utils.LoaderUtility
 import com.app.reciperealm.utils.LoaderUtility.showLoader
 import com.app.reciperealm.viewmodels.RandomViewModel
@@ -20,7 +22,7 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
 
     private var binding: FragmentVideosBinding? = null
     private val randomViewModel: RandomViewModel by viewModel()
-    private val trendingAdapter by lazy { TrendingAdapter() }
+    private val trendingAdapter by lazy { TrendingAdapter(this::onRandomClick) }
     private val randomList: ArrayList<RandomRecipeResponse.Meal> = ArrayList()
 
     override fun onCreateView(
@@ -35,6 +37,11 @@ class VideosFragment : Fragment(R.layout.fragment_videos) {
 
         getRandomRecipe()
 
+    }
+
+    private fun onRandomClick(item: RandomRecipeResponse.Meal) {
+        findNavController().navigate(VideosFragmentDirections.actionVideosFragmentToDetailRecipeFragment(item.idMeal))
+        LoaderUtility.hideLoader()
     }
 
     private fun getRandomRecipe() {

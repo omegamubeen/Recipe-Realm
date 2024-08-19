@@ -1,6 +1,7 @@
 package com.app.reciperealm.network
 
 import com.app.reciperealm.models.remote.AllCategoryResponse
+import com.app.reciperealm.models.remote.AllDetailRecipeResponse
 import com.app.reciperealm.models.remote.RandomRecipeResponse
 import com.app.reciperealm.models.remote.RecipeByCategoryResponse
 import retrofit2.Response
@@ -22,6 +23,9 @@ interface ApiService {
         @Query("c") category: String,
     ): Response<RecipeByCategoryResponse>
 
-
+    @GET("1/lookup.php")
+    suspend fun getRecipesDetail(
+        @Query("i") id: String,
+    ): Response<AllDetailRecipeResponse>
 
 }

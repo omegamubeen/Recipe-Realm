@@ -8,10 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.app.reciperealm.R
 import com.app.reciperealm.adapters.CategoryAdapter
+import com.app.reciperealm.databinding.FragmentFavoriteBinding
 import com.app.reciperealm.databinding.FragmentRecipeBinding
 import com.app.reciperealm.extensions.setGridLayout
+import com.app.reciperealm.extensions.setHorizontalLayout
 import com.app.reciperealm.models.remote.RecipeByCategoryResponse
 import com.app.reciperealm.network.Status
+import com.app.reciperealm.ui.fragments.FavoriteFragmentDirections
 import com.app.reciperealm.utils.LoaderUtility.hideLoader
 import com.app.reciperealm.utils.LoaderUtility.showLoader
 import com.app.reciperealm.viewmodels.RecipeByCategoryViewModel

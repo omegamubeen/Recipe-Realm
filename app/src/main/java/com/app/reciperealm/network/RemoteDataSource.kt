@@ -16,8 +16,8 @@ class RemoteDataSource(
         apiService.getRecipesCategory(category)
     }
 
-//    suspend fun getAllIngredients(ingredient: String) = getResult {
-//        apiService.getAllIngredients(ingredient)
-//    }
+    suspend fun getRecipesDetail(id: String) = getResult {
+        apiService.getRecipesDetail(id)
+    }
 
 }

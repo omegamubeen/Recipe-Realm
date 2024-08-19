@@ -7,12 +7,13 @@ import com.app.reciperealm.network.provideRetrofit
 import com.app.reciperealm.repositories.APIRepository
 import com.app.reciperealm.viewmodels.RecipeByCategoryViewModel
 import com.app.reciperealm.viewmodels.AllCategoryViewModel
-import com.app.reciperealm.viewmodels.AllIngredientViewModel
+import com.app.reciperealm.viewmodels.DetailViewModel
 import com.app.reciperealm.viewmodels.RandomViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
+import org.koin.core.scope.get
 import org.koin.dsl.module
 
 val prefModule = module {
@@ -36,7 +37,8 @@ val viewModules: Module = module {
     viewModel { RandomViewModel(get()) }
     viewModel { AllCategoryViewModel(get()) }
     viewModel { RecipeByCategoryViewModel(get()) }
-//    viewModel { AllIngredientViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
+
 }
 
 val koinModules = listOf(

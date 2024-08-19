@@ -33,8 +33,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     }
 
     private fun onRecipeDetailClick(item: RecipeByCategoryResponse.Meal) {
-        getRecipesCategory(item.idMeal)
-        findNavController().navigate(R.id.action_favoriteFragment_to_makeRecipeFragment)
+        findNavController().navigate(FavoriteFragmentDirections.actionFavoriteFragmentToMakeRecipeFragment(item.idMeal))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

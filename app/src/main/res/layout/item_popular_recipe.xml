@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_margin="20dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="100dp"
@@ -21,7 +21,6 @@
             android:id="@+id/ivRecipe"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/iv_recipe"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription" />
 
@@ -29,27 +28,27 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clMain"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_marginTop="70dp"
-        android:paddingBottom="40dp"
         android:background="@drawable/bground_main"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tvRecipeName"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center"
             android:maxLines="2"
             android:text="@string/pepper_sweetcorn_ramen"
             android:textColor="@color/black"
             android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -61,8 +60,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/poppins_regular"
             android:gravity="center"
-            android:text="@string/time"            android:visibility="gone"
-
+            android:text="@string/time"
             android:textColor="@color/gray"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/tvTime"
@@ -72,8 +70,7 @@
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"            android:visibility="gone"
-
+            android:layout_margin="12dp"
             android:fontFamily="@font/poppins_semi_bold"
             android:gravity="center"
             android:text="10 Mins"
@@ -86,7 +83,6 @@
             android:id="@+id/cardView3"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:visibility="gone"
             android:layout_margin="12dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"

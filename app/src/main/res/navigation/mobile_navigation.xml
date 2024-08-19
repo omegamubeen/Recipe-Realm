@@ -22,7 +22,9 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_makeRecipeFragment"
-            app:destination="@id/makeRecipeFragment" />
+            app:destination="@id/detailRecipeFragment" />
+
+
     </fragment>
 
     <fragment
@@ -32,7 +34,7 @@
         tools:layout="@layout/fragment_favorite" >
         <action
             android:id="@+id/action_favoriteFragment_to_makeRecipeFragment"
-            app:destination="@id/makeRecipeFragment" />
+            app:destination="@id/detailRecipeFragment" />
     </fragment>
 
     <fragment
@@ -54,21 +56,33 @@
         tools:layout="@layout/fragment_create_recipe" />
 
     <fragment
-        android:id="@+id/makeRecipeFragment"
+        android:id="@+id/detailRecipeFragment"
         android:name="com.app.reciperealm.ui.fragments.DetailRecipeFragment"
         android:label="fragment_make_recipe"
-        tools:layout="@layout/fragment_detail_recipe" />
+        tools:layout="@layout/fragment_detail_recipe" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/recipeFragment"
         android:name="com.app.reciperealm.ui.fragments.tablayoutfragment.RecipeFragment"
         android:label="fragment_recipe"
-        tools:layout="@layout/fragment_recipe" />
+        tools:layout="@layout/fragment_recipe" >
+        <action
+            android:id="@+id/action_recipeFragment_to_detailRecipeFragment"
+            app:destination="@id/detailRecipeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/videosFragment"
         android:name="com.app.reciperealm.ui.fragments.tablayoutfragment.VideosFragment"
         android:label="fragment_videos"
-        tools:layout="@layout/fragment_videos" />
+        tools:layout="@layout/fragment_videos" >
+        <action
+            android:id="@+id/action_videosFragment_to_detailRecipeFragment"
+            app:destination="@id/detailRecipeFragment" />
+    </fragment>
 
 </navigation>

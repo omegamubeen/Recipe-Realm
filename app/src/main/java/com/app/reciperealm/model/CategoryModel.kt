@@ -1,4 +1,4 @@
-package com.app.reciperealm.ui.model
+package com.app.reciperealm.model
 
 data class CategoryModel(
     val image: String? = null,
