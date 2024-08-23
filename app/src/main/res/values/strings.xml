@@ -65,4 +65,5 @@
     <string name="item_name">Item name</string>
     <string name="quantity">Quantity</string>
     <string name="chicken">Chicken</string>
+    <string name="search_result">Search Result</string>
 </resources>

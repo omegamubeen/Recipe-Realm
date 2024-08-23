@@ -5,20 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.app.reciperealm.R
 import com.app.reciperealm.adapters.BreakfastAdapter
 import com.app.reciperealm.adapters.CategoryAdapter
+import com.app.reciperealm.adapters.SearchAdapter
 import com.app.reciperealm.adapters.TrendingAdapter
 import com.app.reciperealm.databinding.FragmentHomeBinding
 import com.app.reciperealm.extensions.setGridLayout
 import com.app.reciperealm.extensions.setHorizontalLayout
-import com.app.reciperealm.extensions.setVerticalLayout
 import com.app.reciperealm.models.remote.AllCategoryResponse
 import com.app.reciperealm.models.remote.RandomRecipeResponse
 import com.app.reciperealm.models.remote.RecipeByCategoryResponse
+import com.app.reciperealm.models.remote.SearchResponse
 import com.app.reciperealm.network.Status
 import com.app.reciperealm.utils.LoaderUtility.hideLoader
 import com.app.reciperealm.utils.LoaderUtility.showLoader
@@ -58,12 +59,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun onRandomClick(item: RandomRecipeResponse.Meal) {
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMakeRecipeFragment(item.idMeal))
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToMakeRecipeFragment(
+                item.idMeal
+            )
+        )
         hideLoader()
     }
 
     private fun onRecipeDetailClick(item: RecipeByCategoryResponse.Meal) {
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMakeRecipeFragment(item.idMeal))
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToMakeRecipeFragment(
+                item.idMeal
+            )
+        )
         hideLoader()
     }
 
@@ -73,6 +82,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         getRandomRecipe()
         getBreakfastRecipe("list")
 
+        binding!!.edtSearch.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val query = v.text.toString().lowercase()
+                if (query.isNotEmpty()) {
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchResultFragment(query))
+                } }
+            true
+        }
     }
 
     private fun getRandomRecipe() {

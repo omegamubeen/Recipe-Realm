@@ -9,6 +9,7 @@ import com.app.reciperealm.viewmodels.RecipeByCategoryViewModel
 import com.app.reciperealm.viewmodels.AllCategoryViewModel
 import com.app.reciperealm.viewmodels.DetailViewModel
 import com.app.reciperealm.viewmodels.RandomViewModel
+import com.app.reciperealm.viewmodels.SearchViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -38,6 +39,7 @@ val viewModules: Module = module {
     viewModel { AllCategoryViewModel(get()) }
     viewModel { RecipeByCategoryViewModel(get()) }
     viewModel { DetailViewModel(get()) }
+    viewModel { SearchViewModel(get()) }
 
 }
 

@@ -91,12 +91,12 @@
         android:id="@+id/ivLocation"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="5dp"
         android:contentDescription="@string/todo"
         android:src="@drawable/ic_location"
-        app:layout_constraintBottom_toBottomOf="@+id/btnInstagram"
         app:layout_constraintEnd_toStartOf="@+id/tvLocation"
-        app:layout_constraintTop_toTopOf="@+id/btnInstagram" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/tvLocation"
@@ -113,11 +113,11 @@
 
     <ImageView
         android:id="@+id/btnInstagram"
-        android:layout_width="@dimen/_30sdp"
-        android:layout_height="@dimen/_30sdp"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
         android:layout_marginTop="15dp"
-        android:src="@drawable/instagram"
         android:contentDescription="@string/todo"
+        android:src="@drawable/instagram"
         app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -125,24 +125,25 @@
         android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
         android:fontFamily="@font/poppins_semi_bold"
         android:text="@string/chicken"
         android:textColor="@color/neutral"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/btnInstagram"
-        app:layout_constraintTop_toBottomOf="@+id/btnInstagram" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivLocation"
+        app:layout_constraintStart_toEndOf="@+id/btnInstagram"
+        app:layout_constraintTop_toTopOf="@+id/ivLocation" />
 
     <TextView
         android:id="@+id/tvIngredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/ingredients"
         android:textColor="@color/neutral"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/tvCategory"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
 
     <androidx.recyclerview.widget.RecyclerView

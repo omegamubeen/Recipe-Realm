@@ -4,6 +4,7 @@ import com.app.reciperealm.models.remote.AllCategoryResponse
 import com.app.reciperealm.models.remote.AllDetailRecipeResponse
 import com.app.reciperealm.models.remote.RandomRecipeResponse
 import com.app.reciperealm.models.remote.RecipeByCategoryResponse
+import com.app.reciperealm.models.remote.SearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -27,5 +28,10 @@ interface ApiService {
     suspend fun getRecipesDetail(
         @Query("i") id: String,
     ): Response<AllDetailRecipeResponse>
+
+    @GET("1/search.php")
+    suspend fun getSearchRecipe(
+        @Query("s") search: String,
+    ): Response<SearchResponse>
 
 }

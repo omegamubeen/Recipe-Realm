@@ -19,19 +19,20 @@
         android:id="@+id/homeFragment"
         android:name="com.app.reciperealm.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_makeRecipeFragment"
             app:destination="@id/detailRecipeFragment" />
-
-
+        <action
+            android:id="@+id/action_homeFragment_to_searchResultFragment"
+            app:destination="@id/searchResultFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.app.reciperealm.ui.fragments.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" >
+        tools:layout="@layout/fragment_favorite">
         <action
             android:id="@+id/action_favoriteFragment_to_makeRecipeFragment"
             app:destination="@id/detailRecipeFragment" />
@@ -59,7 +60,7 @@
         android:id="@+id/detailRecipeFragment"
         android:name="com.app.reciperealm.ui.fragments.DetailRecipeFragment"
         android:label="fragment_make_recipe"
-        tools:layout="@layout/fragment_detail_recipe" >
+        tools:layout="@layout/fragment_detail_recipe">
         <argument
             android:name="id"
             app:argType="string" />
@@ -69,7 +70,7 @@
         android:id="@+id/recipeFragment"
         android:name="com.app.reciperealm.ui.fragments.tablayoutfragment.RecipeFragment"
         android:label="fragment_recipe"
-        tools:layout="@layout/fragment_recipe" >
+        tools:layout="@layout/fragment_recipe">
         <action
             android:id="@+id/action_recipeFragment_to_detailRecipeFragment"
             app:destination="@id/detailRecipeFragment" />
@@ -79,10 +80,22 @@
         android:id="@+id/videosFragment"
         android:name="com.app.reciperealm.ui.fragments.tablayoutfragment.VideosFragment"
         android:label="fragment_videos"
-        tools:layout="@layout/fragment_videos" >
+        tools:layout="@layout/fragment_videos">
         <action
             android:id="@+id/action_videosFragment_to_detailRecipeFragment"
             app:destination="@id/detailRecipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.app.reciperealm.ui.fragments.SearchResultFragment"
+        android:label="fragment_search_result"
+        tools:layout="@layout/fragment_search_result">
+        <action
+            android:id="@+id/action_searchResultFragment_to_detailRecipeFragment"
+            app:destination="@id/detailRecipeFragment" />
+        <argument
+            android:name="search"
+            app:argType="string" />
     </fragment>
 
 </navigation>

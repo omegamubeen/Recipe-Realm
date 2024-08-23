@@ -12,7 +12,9 @@ import androidx.navigation.fragment.navArgs
 import com.app.reciperealm.R
 import com.app.reciperealm.adapters.DetailAdapter
 import com.app.reciperealm.databinding.FragmentDetailRecipeBinding
+import com.app.reciperealm.extensions.hide
 import com.app.reciperealm.extensions.setVerticalLayout
+import com.app.reciperealm.extensions.show
 import com.app.reciperealm.models.remote.AllDetailRecipeResponse
 import com.app.reciperealm.network.Status
 import com.app.reciperealm.utils.LoaderUtility.hideLoader
@@ -87,7 +89,11 @@ class DetailRecipeFragment : Fragment(R.layout.fragment_detail_recipe) {
                     binding!!.btnInstagram.setOnClickListener { it2 ->
                         openLinkInstagram(it?.first()?.strSource ?: "")
                     }
-
+                    if (it?.first()?.strSource.isNullOrEmpty()) {
+                        binding!!.btnInstagram.hide()
+                    }else {
+                        binding!!.btnInstagram.show()
+                    }
                     detailList.clear()
                     detailList.addAll(it?.toCollection(ArrayList())?.reversed() ?: ArrayList())
                     binding!!.rcvIngredients.setVerticalLayout()

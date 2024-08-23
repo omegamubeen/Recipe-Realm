@@ -20,4 +20,8 @@ class RemoteDataSource(
         apiService.getRecipesDetail(id)
     }
 
+    suspend fun getSearchRecipe(search: String) = getResult {
+        apiService.getSearchRecipe(search)
+    }
+
 }
